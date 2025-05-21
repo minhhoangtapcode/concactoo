@@ -432,27 +432,6 @@ function UserModule:__init()
         SeaMonsterRenderDistance = math.huge
     })
     
-    -- [[ Init Hookfunction and Hookmetamethod ]]
-    local oldNamecall; oldNamecall = hookmetamethod(game, '__namecall', newcclosure(LPH_NO_UPVALUES(function(self, ...)
-        if checkcaller() then return oldNamecall(self, ...) end
-        
-        local args = { ... }
-        local __namecall = getnamecallmethod()
-    
-        if __namecall == 'InvokeServer' then
-            local instanceName = tostring(self)
-            if instanceName ~= 'SkillAction' then return oldNamecall(self, ...) end
-            if args[2] == nil then return oldNamecall(self, ...) end
-            if type(args[2]) ~= 'table' then return oldNamecall(self, ...) end
-            if args[2]['MouseHit'] == nil then return oldNamecall(self, ...) end
-            args[2]['MouseHit'] = CFrame.new(seaEvent:getTarget().PrimaryPart.Position)
-    
-            return oldNamecall(self, unpack(args))
-        end
-    
-        return oldNamecall(self, unpack(args))
-    end)))
-
     -- [[ Main ]]
     createStatusUI()
     task.spawn(LPH_NO_VIRTUALIZE(function()
