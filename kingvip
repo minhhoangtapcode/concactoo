@@ -1,6 +1,6 @@
 -- [[ Prevent some bugs ]]
 repeat task.wait() until game:IsLoaded()
-task.wait(10)
+task.wait(0.1)
 
 -- [[ Luraph ENV ]]
 if not LPH_OBFUSCATED then
