@@ -1,6 +1,6 @@
 -- [[ Prevent some bugs ]]
 repeat task.wait() until game:IsLoaded()
-task.wait(0.1)
+task.wait(10)
 
 -- [[ Luraph ENV ]]
 if not LPH_OBFUSCATED then
@@ -431,7 +431,7 @@ function UserModule:__init()
         ModelRenderDistance = 1500, 
         SeaMonsterRenderDistance = math.huge
     })
-    
+
     -- [[ Main ]]
     createStatusUI()
     task.spawn(LPH_NO_VIRTUALIZE(function()
